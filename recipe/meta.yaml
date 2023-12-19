@@ -10,8 +10,11 @@ source:
   sha256: 211ecf7dd291e5339359b3422ca758a679f3d89624f7cff6039e90a6904efd96
 
 build:
+  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  entry_points:
+    - remotezip = remotezip:main
 
 requirements:
   host:
@@ -23,12 +26,13 @@ requirements:
     - tabulate
 
 test:
-  imports:
-    - remotezip
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
+    - remotezip --help
+  imports:
+    - remotezip
 
 about:
   home: https://github.com/gtsystem/python-remotezip
