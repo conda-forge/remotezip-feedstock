@@ -6,28 +6,29 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/remotezip-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/remotezip-{{ version }}.tar.gz
   sha256: bf1ebe2be9f07a6e1c14d0e52ecffccd7a3e808dff4f9ba523c5e84d867a3fe3
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
   entry_points:
     - remotezip = remotezip:main
 
 requirements:
   host:
-    - python >=2.7
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=2.7
+    - python >={{ python_min }}
     - requests
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - remotezip --help
