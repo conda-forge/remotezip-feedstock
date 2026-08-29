@@ -1,18 +1,18 @@
 {% set name = "remotezip" %}
-{% set version = "0.12.3" %}
+{% set version = "0.12.6" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/remotezip-{{ version }}.tar.gz
-  sha256: bf1ebe2be9f07a6e1c14d0e52ecffccd7a3e808dff4f9ba523c5e84d867a3fe3
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/remotezip-{{ version }}.tar.gz
+  sha256: 54a9d93bfe015ec79aa3a3869f0666360aa8d02626c16956e65ca7f33274b4fa
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
   entry_points:
     - remotezip = remotezip:main
 
